@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+#set(title="首页")
+#@layout()
+
+#define body()
+<a href="/borrow">借书</a>
+<a href="/restore">还书</a>
+
+<div id="Borrow" style="float: left;width:50%;">
+    <p style="font-size: 150% ;text-align: center">可借书籍</p>
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col width="60">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>书名</th>
+            <th>剩余数量</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(book:bookList)
+        <tr>
+            <td>#(book.name)</td>
+            <td>#(book.numb)</td>
+            <td><a href="/borrow/sub/#(book.id)" class="sub">借书</a></td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>
+#end
+
+#define css()
+<link rel="stylesheet" href="/assets/css/borrow.css">
+#end
+
+#define js()
+<script src="/assets/js/borrow.js"></script>
+#end

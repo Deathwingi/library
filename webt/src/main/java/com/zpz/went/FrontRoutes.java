@@ -11,5 +11,7 @@ public class FrontRoutes extends Routes{
         add("/",IndexController.class,"/index");
         add("login",LoginController.class);
         add("sign",SignController.class);
+        add("borrow",BorrowController.class);
+        add("restore",RestoreController.class);
     }
 }

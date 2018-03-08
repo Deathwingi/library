@@ -20,9 +20,9 @@ layui.use(['form', 'jquery', 'layer','element'], function(){
                         title:'消息'
                         ,content:"登录成功",
                         yes:function () {
-                            location.href="/sign"
+                            location.href="/borrow"
                         },cancel:function () {
-                        location.href="/sign"
+                        location.href="/borrow"
                     }
                     }
                 );
