@@ -22,9 +22,8 @@ public class LoginService {
         if (pwd.equals(password)) {
             User users = userDao.findFirst(Db.getSqlPara("user.findByName",
                     username));
-            int users_id = users.getId();
             String token = StrKit.getRandomUUID();
-            Redis.use().setex(token, 60 * 60, users_id);
+            Redis.use().setex(token, 60 * 60, users);
             return Ret.by("status", true).set("loginToken", token);
 
         } else {

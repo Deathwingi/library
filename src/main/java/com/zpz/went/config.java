@@ -71,8 +71,8 @@ public class config extends JFinalConfig {
         return new RedisPlugin("token", host, port, timeout, password, database);
     }
 
-    public void configInterceptor(Interceptors interceptors) {
-
+    public void configInterceptor(Interceptors me) {
+        me.add(new UserInterceptor());
     }
 
     public void configHandler(Handlers handlers) {

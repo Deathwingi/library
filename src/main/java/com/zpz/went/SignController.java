@@ -1,11 +1,13 @@
 package com.zpz.went;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.kit.Ret;
 
 /**
  * Created by home on 2017/12/12.
  */
+@Clear(UserInterceptor.class)
 public class SignController extends BaseController {
     private static final SignService srv=new SignService();
     public void index(){render("sign.html");}

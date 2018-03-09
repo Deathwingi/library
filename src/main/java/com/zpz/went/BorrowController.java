@@ -18,8 +18,8 @@ public class BorrowController extends BaseController {
 
     public void sub(){
         String token = getCookie(LoginService.SESSION_ID_NAME);
-        int user_id = Redis.use().get(token);
-
+        User user = Redis.use().get(token);
+        int user_id = user.getId();
         System.out.print(user_id);
         Integer bookId=getParaToInt();
         Ret ret = bs.BorrowBook(bookId, user_id);
