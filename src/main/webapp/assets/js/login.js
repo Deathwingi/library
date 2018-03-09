@@ -26,6 +26,7 @@ layui.use(['form', 'jquery', 'layer','element'], function(){
                     }
                     }
                 );
+
             }
             else{
                 layer.open(

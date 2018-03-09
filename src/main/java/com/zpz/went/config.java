@@ -2,6 +2,8 @@ package com.zpz.went;
 
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
+import com.jfinal.json.MixedJsonFactory;
+import com.jfinal.kit.ElKit;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
@@ -9,6 +11,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.IDataSourceProvider;
 import com.jfinal.plugin.activerecord.dialect.SqlServerDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.template.Engine;
 
 /**
@@ -30,6 +33,7 @@ public class config extends JFinalConfig {
 
     public void configConstant(Constants me) {
         me.setDevMode(p.getBoolean("devMode"));
+        me.setJsonFactory(MixedJsonFactory.me());
     }
 
     public void configRoute(Routes me) {
@@ -48,7 +52,7 @@ public class config extends JFinalConfig {
         ActiveRecordPlugin arp = getActiveRecordPlugin(dp);
         arp.setDialect(new SqlServerDialect());
         me.add(arp);
-        arp.addMapping("j_user", "id", User.class);
+        me.add(getRedisPlugin());
     }
     public DruidPlugin getDruidPlugin() {
         String url = p.get("jdbc.url");
@@ -56,6 +60,15 @@ public class config extends JFinalConfig {
         String password = p.get("jdbc.pwd");
         String driverClass = p.get("jdbc.driver");
         return new DruidPlugin(url, username, password, driverClass);
+    }
+
+    private RedisPlugin getRedisPlugin() {
+        String host = p.get("redis.host");
+        int port = p.getInt("redis.port");
+        int timeout = ElKit.eval(p.get("redis.timeout"));
+        String password = p.get("redis.password");
+        int database = p.getInt("redis.tokenDatabase");
+        return new RedisPlugin("token", host, port, timeout, password, database);
     }
 
     public void configInterceptor(Interceptors interceptors) {

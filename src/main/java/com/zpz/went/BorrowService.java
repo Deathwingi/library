@@ -11,7 +11,7 @@ import java.util.List;
 public class BorrowService {
     public static final BorrowService me=new BorrowService();
     private static final Book bookDao=new Book().dao();
-    private static final Borrow borrowDao = new Borrow().dao();
+    private static final BookDetail bookDetailDao = new BookDetail().dao();
     private static final User userDao = new User().dao();
 
 
@@ -21,12 +21,15 @@ public class BorrowService {
         return bookList;
     }
 
-    public Ret BorrowBook(Integer bookId){
+    public Ret BorrowBook(Integer bookId, Integer user_id) {
         Book book=bookDao.findFirst(Db.getSqlPara("book.findById",bookId));
         if(book.getNumb()==0){
             return Ret.by("status",false).set("message","没有库存了");
         }else{
             if(book.setNumb(book.getNumb()-1).update()){
+                BookDetail bd = bookDetailDao.findFirst(Db.getSqlPara(
+                        "bookDetail.findBookLeft", bookId));
+                bd.setBelong(user_id).update();
 
                 return Ret.by("status",true);
             } else {

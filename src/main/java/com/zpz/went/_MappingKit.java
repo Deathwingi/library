@@ -17,8 +17,7 @@ public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("j_book", "id", Book.class);
-        // Composite Primary Key order: book_id,user_id
-        arp.addMapping("j_borrow", "book_id,user_id", Borrow.class);
+        arp.addMapping("j_bookDetail", "id", BookDetail.class);
         arp.addMapping("j_user", "id", User.class);
     }
 }

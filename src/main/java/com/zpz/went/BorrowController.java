@@ -1,6 +1,7 @@
 package com.zpz.went;
 
 import com.jfinal.kit.Ret;
+import com.jfinal.plugin.redis.Redis;
 
 import java.util.List;
 
@@ -16,8 +17,12 @@ public class BorrowController extends BaseController {
     }
 
     public void sub(){
+        String token = getCookie(LoginService.SESSION_ID_NAME);
+        int user_id = Redis.use().get(token);
+
+        System.out.print(user_id);
         Integer bookId=getParaToInt();
-        Ret ret=bs.BorrowBook(bookId);
+        Ret ret = bs.BorrowBook(bookId, user_id);
         renderJson(ret);
     }
 }
