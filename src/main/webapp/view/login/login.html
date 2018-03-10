@@ -4,6 +4,7 @@
 
 #define body()
 <a href="/sign">注册</a>
+<a href="/changeInfo">修改密码</a>
 <div class="layui-main" style="text-align:center;width: 80%;margin:0 auto;">
     <p style="font-size: 120%">请登录</p>
     <div id="login-div">
@@ -16,6 +17,14 @@
                 <input type="password" placeholder="请输入密码" required lay-verify="required" name="password"
                        id="input-password" ,
                        class="layui-input">
+            </div>
+            <div class="layui-form-item" id="catpcha-div">
+                <input type="text" placeholder="请输入验证码" required lay-verify="required" name="captcha"
+                       class="layui-input" style="display:inline;width: 85%;float: left"
+                       id="captcha-input">
+                <img src='login/captcha' id="captcha-img" title="点击刷新"
+                     onclick="this.src='/login/captcha?x='+Math.random()"
+                     style="float: right">
             </div>
             <div class="layui-form-item">
                 <button type="submit" class="layui-btn" lay-submit id="button-submit" style="width: 100%;"

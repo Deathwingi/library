@@ -1,7 +1,6 @@
 package com.zpz.went;
 
 import com.jfinal.config.*;
-import com.jfinal.core.JFinal;
 import com.jfinal.json.MixedJsonFactory;
 import com.jfinal.kit.ElKit;
 import com.jfinal.kit.PathKit;
@@ -22,13 +21,7 @@ public class config extends JFinalConfig {
 
     //加载配置
     private static Prop loadConfig() {
-
         return PropKit.use("config.properties");
-    }
-
-
-    public static void main(String[] args) {
-        JFinal.start("src/main/webapp", 80, "/");
     }
 
     public void configConstant(Constants me) {

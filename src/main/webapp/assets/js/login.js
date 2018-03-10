@@ -1,9 +1,6 @@
 /**
  * Created by home on 2017/12/12.
  */
-/**
- * Created by home on 2017/12/12.
- */
 layui.use(['form', 'jquery', 'layer','element'], function(){
     var form = layui.form
         ,layer = layui.layer

@@ -30,4 +30,20 @@ public class LoginService {
             return Ret.by("status", false).set("message", "密码错误");
         }
     }
+
+    public Ret changeIofo(String username, String oldPassword, String newPassword) {
+        User user = userDao.findFirst(Db.getSqlPara("user.findByName", username));
+        if (user == null) {
+            return Ret.by("status", false).set("message", "无此用户");
+        }
+        String password = user.getPassword();
+        if (!password.equals(oldPassword)) {
+            return Ret.by("status", false).set("message", "旧密码错误");
+        }
+        if (user.setPassword(newPassword).update()) {
+            return Ret.by("status", true);
+        } else {
+            return Ret.by("status", false);
+        }
+    }
 }
