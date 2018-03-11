@@ -50,6 +50,7 @@ public class LoginController extends BaseController {
         } else {
             Ret ret = srv.changeIofo(username, oldPassword, newPassword);
             renderJson(ret);
+            removeCookie(LoginService.SESSION_ID_NAME);
         }
     }
 

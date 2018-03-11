@@ -18,6 +18,15 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return (M)this;
 	}
 
+	public java.lang.Integer getType() {
+		return getInt("type");
+	}
+
+	public M setType(java.lang.Integer type) {
+		set("type", type);
+		return (M) this;
+	}
+
     public java.lang.String getUsername() {
         return getStr("username");
     }

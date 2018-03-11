@@ -27,7 +27,7 @@ public class RestoreService {
                 "book.findById", book_id
         ));
         BookDetail bd = bdDao.findFirst(Db.getSqlPara(
-                "bookDetail.findByBelong", user_id
+                "bookDetail.findByBelong", user_id, book_id
         ));
         if (bd == null) {
             return Ret.by("status", false).set("message", "无此书可还");

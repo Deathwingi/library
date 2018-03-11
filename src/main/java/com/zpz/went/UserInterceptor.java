@@ -18,6 +18,7 @@ public class UserInterceptor implements Interceptor {
             c.redirect("/login");
             return;
         }
+        c.setAttr("user", user);
         inv.invoke();
     }
 }
