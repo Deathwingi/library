@@ -7,11 +7,12 @@ import com.jfinal.config.Routes;
  */
 public class FrontRoutes extends Routes{
     public void config(){
-        setBaseViewPath("view");
+        setBaseViewPath("/view");
         add("/",IndexController.class,"/index");
         add("/login", LoginController.class);
         add("/sign", SignController.class);
         add("/borrow", BorrowController.class);
         add("/restore", RestoreController.class);
+        add("/addBook", AddBookController.class);
     }
 }

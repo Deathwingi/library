@@ -17,9 +17,9 @@ layui.use(['form', 'jquery', 'layer','element'], function(){
                         title:'消息'
                         ,content:"登录成功",
                         yes:function () {
-                            location.href="/borrow"
+                            location.href = "/"
                         },cancel:function () {
-                        location.href="/borrow"
+                        location.href = "/"
                     }
                     }
                 );

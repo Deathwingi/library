@@ -66,6 +66,7 @@ public class config extends JFinalConfig {
 
     public void configInterceptor(Interceptors me) {
         me.add(new UserInterceptor());
+        me.add(new GlobalInterceptor());
     }
 
     public void configHandler(Handlers handlers) {

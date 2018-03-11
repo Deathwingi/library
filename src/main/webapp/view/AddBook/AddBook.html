@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+#set(title="首页")
+#@layout()
+
+#define body()
+
+#if(bookDetailList)
+<div id="Borrow" style="float: left;width:50%;">
+    <p style="font-size: 150% ;text-align: center">书籍情况</p>
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col width="60">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>书名</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(bookDetail:bookDetailList)
+        <tr>
+            <td>#(bookDetail.id)</td>
+            <td>#(bookDetail.name)</td>
+            <td><a href="/addBook/sub/#(bookDetail.id)" class="sub">删除</a></td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>
+
+#else
+<p style="font-size: 100% ;text-align: center;padding-top: 20px;padding-bottom: 20px;float: left;width:50%;">没有图书</p>
+#end
+
+<button id="add-Book-button" class="layui-btn" style="width: 100%">添加书籍</button>
+<div id="add-Book-div" style="padding-top: 30px" hidden>
+    <form class="layui-form" action="addBook/plus" id="addBook-form" method="post">
+        <div class="layui-form-item">
+            <input type="text" placeholder="请输入书名" required lay-verify="required" name="addBookName"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <input type="text" placeholder="请输入数量" required lay-verify="required" name="addBookNum" ,
+                   class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <button type="submit" class="layui-btn" lay-submit id="button-addBook-submit" style="width: 100%;"
+                    lay-filter="addSubmit">添加书籍
+            </button>
+        </div>
+    </form>
+    <button class="layui-btn" style="width: 100%;" id="cancerAdd">取消
+    </button>
+</div>
+
+#end
+
+#define css()
+<link rel="stylesheet" href="/assets/css/addBook.css">
+#end
+
+#define js()
+<script src="/assets/js/addBook.js"></script>
+#end
