@@ -1,7 +1,10 @@
 package com.zpz.went.restore;
 
+import com.jfinal.aop.Before;
+import com.jfinal.aop.Enhancer;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.tx.Tx;
 import com.zpz.went.common.model.Book;
 import com.zpz.went.common.model.BookDetail;
 
@@ -12,7 +15,7 @@ import java.util.List;
  * Created by home on 2018/3/9.
  */
 public class RestoreService {
-    private static final RestoreService me = new RestoreService();
+    public static final RestoreService me = Enhancer.enhance(RestoreService.class);
     private static final Book bookDao = new Book().dao();
     private static final BookDetail bdDao = new BookDetail().dao();
 
@@ -23,7 +26,7 @@ public class RestoreService {
         return bookList;
     }
 
-
+    @Before(Tx.class)
     public Ret restoreBook(int book_id, int user_id) {
         Book book = bookDao.findFirst(Db.getSqlPara(
                 "book.findById", book_id

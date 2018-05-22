@@ -36,6 +36,9 @@ public class AddBookService {
         } else {
             book.setNumb(book.getNumb() - 1).update();
             bookDetail.delete();
+            if (book.getNumb() == 0) {
+                book.delete();
+            }
             return Ret.by("status", true);
         }
     }

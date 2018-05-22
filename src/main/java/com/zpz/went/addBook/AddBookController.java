@@ -1,7 +1,9 @@
 package com.zpz.went.addBook;
 
+import com.jfinal.aop.Before;
 import com.jfinal.kit.Ret;
 import com.zpz.went.common.controller.BaseController;
+import com.zpz.went.common.interceptor.MgrInterceptor;
 import com.zpz.went.common.model.BookDetail;
 
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 /**
  * Created by home on 2018/3/11.
  */
+@Before(MgrInterceptor.class)
 public class AddBookController extends BaseController {
     AddBookService srv = new AddBookService();
 
