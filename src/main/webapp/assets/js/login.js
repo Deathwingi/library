@@ -28,6 +28,7 @@ layui.use(['form', 'jquery', 'layer', 'element'], function () {
 
             }
             else {
+                $('#captcha-img').prop('src', '/login/captcha?x=' + Math.random());
                 layer.open(
                     {
                         title: '消息',

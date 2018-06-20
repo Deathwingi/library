@@ -9,17 +9,13 @@ import com.jfinal.plugin.activerecord.Model;
 @SuppressWarnings({"serial", "unchecked"})
 public abstract class BaseBook<M extends BaseBook<M>> extends Model<M> implements IBean {
 
-	public java.lang.Integer getId() {
-		return getInt("id");
-	}
-
 	public M setId(java.lang.Integer id) {
 		set("id", id);
 		return (M)this;
 	}
 
-	public java.lang.String getName() {
-		return getStr("name");
+    public java.lang.Integer getId() {
+        return getInt("id");
 	}
 
 	public M setName(java.lang.String name) {
@@ -27,13 +23,17 @@ public abstract class BaseBook<M extends BaseBook<M>> extends Model<M> implement
 		return (M)this;
 	}
 
-	public java.lang.Integer getNumb() {
-		return getInt("numb");
+    public java.lang.String getName() {
+        return getStr("name");
 	}
 
 	public M setNumb(java.lang.Integer numb) {
 		set("numb", numb);
 		return (M)this;
 	}
+
+    public java.lang.Integer getNumb() {
+        return getInt("numb");
+    }
 
 }

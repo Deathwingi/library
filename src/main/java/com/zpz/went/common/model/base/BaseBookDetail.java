@@ -9,40 +9,40 @@ import com.jfinal.plugin.activerecord.Model;
 @SuppressWarnings({"serial", "unchecked"})
 public abstract class BaseBookDetail<M extends BaseBookDetail<M>> extends Model<M> implements IBean {
 
-    public java.lang.Integer getId() {
-        return getInt("id");
-    }
+	public java.lang.Integer getId() {
+		return getInt("id");
+	}
 
-    public M setId(java.lang.Integer id) {
-        set("id", id);
-        return (M) this;
-    }
+	public M setId(java.lang.Integer id) {
+		set("id", id);
+		return (M) this;
+	}
 
-    public java.lang.String getName() {
-        return getStr("name");
-    }
+	public java.lang.String getName() {
+		return getStr("name");
+	}
 
-    public M setName(java.lang.String name) {
-        set("name", name);
-        return (M) this;
-    }
+	public M setName(java.lang.String name) {
+		set("name", name);
+		return (M) this;
+	}
 
-    public java.lang.Integer getBelong() {
-        return getInt("belong");
-    }
+	public java.lang.Integer getBelong() {
+		return getInt("belong");
+	}
 
-    public M setBelong(java.lang.Integer belong) {
-        set("belong", belong);
-        return (M) this;
-    }
+	public M setBelong(java.lang.Integer belong) {
+		set("belong", belong);
+		return (M) this;
+	}
 
-    public java.lang.Integer getBookId() {
-        return getInt("book_id");
-    }
+	public java.lang.Integer getBookId() {
+		return getInt("book_id");
+	}
 
-    public M setBookId(java.lang.Integer bookId) {
-        set("book_id", bookId);
-        return (M) this;
-    }
+	public M setBookId(java.lang.Integer bookId) {
+		set("book_id", bookId);
+		return (M) this;
+	}
 
 }

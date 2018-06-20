@@ -1,5 +1,6 @@
 package com.zpz.went.login;
 
+import com.jfinal.kit.HashKit;
 import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Db;
@@ -20,7 +21,8 @@ public class LoginService {
             return Ret.by("status", false).set("message", "用户不存在");
         }
         String pwd = user.getPassword();
-        if (pwd.equals(password)) {
+        String salt = user.getSalt();
+        if (pwd.equals(HashKit.sha256(salt + password))) {
             User users = userDao.findFirst(Db.getSqlPara("user.findByName",
                     username));
             String token = StrKit.getRandomUUID();

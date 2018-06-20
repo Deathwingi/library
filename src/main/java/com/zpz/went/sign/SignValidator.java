@@ -12,6 +12,8 @@ public class SignValidator extends BaseValidator {
     protected void validate(Controller c) {
         validateEqualString(c.getPara("password"), c.getPara("repeatPassword"), "message",
                 "两次密码不一致");
+        validateString("username", 2, 20, "message", "用户名格式错误");
+        validateRegex("username", "^\\S{2,20}$", "message", "用户名格式错误");
     }
 
     @Override

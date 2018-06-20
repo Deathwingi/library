@@ -9,12 +9,30 @@ import com.jfinal.plugin.activerecord.Model;
 @SuppressWarnings({"serial", "unchecked"})
 public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implements IBean {
 
-    public java.lang.Integer getId() {
-        return getInt("id");
-    }
-
 	public M setId(java.lang.Integer id) {
 		set("id", id);
+		return (M)this;
+	}
+
+	public java.lang.Integer getId() {
+		return getInt("id");
+	}
+
+	public java.lang.String getUsername() {
+		return getStr("username");
+	}
+
+	public M setUsername(java.lang.String username) {
+		set("username", username);
+		return (M) this;
+	}
+
+	public java.lang.String getPassword() {
+		return getStr("password");
+	}
+
+	public M setPassword(java.lang.String password) {
+		set("password", password);
 		return (M)this;
 	}
 
@@ -24,25 +42,16 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 
 	public M setType(java.lang.Integer type) {
 		set("type", type);
+		return (M)this;
+	}
+
+	public java.lang.String getSalt() {
+		return getStr("salt");
+	}
+
+	public M setSalt(java.lang.String salt) {
+		set("salt", salt);
 		return (M) this;
-	}
-
-    public java.lang.String getUsername() {
-        return getStr("username");
-    }
-
-	public M setUsername(java.lang.String username) {
-		set("username", username);
-		return (M)this;
-	}
-
-    public java.lang.String getPassword() {
-        return getStr("password");
-    }
-
-	public M setPassword(java.lang.String password) {
-		set("password", password);
-		return (M)this;
 	}
 
 }

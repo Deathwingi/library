@@ -15,7 +15,7 @@ public class _Generator{
         String baseModelPackageName = "com.zpz.went.common.model.base";
         String baseModelOutputDir = "src/main/java/com/zpz/went/common/model/base";
         String modelPackageName = "com.zpz.went.common.model";
-        String modelOutputDir = "src/main/java/com/zpz.went/common/model";
+        String modelOutputDir = "src/main/java/com/zpz/went/common/model";
 
         DruidPlugin dp = new config().getDruidPlugin();
         dp.start();
